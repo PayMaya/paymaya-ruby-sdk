@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y:@pg-sandbox.paymaya.com/checkout/v1/webhooks
+    method: delete
+    uri: https://sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y:@pg-sandbox.paymaya.com/checkout/v1/customizations
     body:
-      encoding: UTF-8
-      string: '{"name":"CHECKOUT_DROPOUT","callbackUrl":"http://userwebsite.com/dropout"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - "*/*"
@@ -15,8 +15,6 @@ http_interactions:
       - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
       Content-Type:
       - application/json
-      Content-Length:
-      - '74'
       Host:
       - pg-sandbox.paymaya.com
   response:
@@ -25,17 +23,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 25 Dec 2016 10:45:27 GMT
+      - Sun, 25 Dec 2016 10:51:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '118'
+      - '36'
       Connection:
       - close
       Access-Control-Allow-Origin:
       - "*"
-      Vary:
-      - X-HTTP-Method-Override
       X-Content-Type-Options:
       - nosniff
       Strict-Transport-Security:
@@ -49,12 +45,12 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Etag:
-      - W/"76-XIB/7zETWpJWj0TSZ/2dmQ"
+      - W/"24-0SLlmaQZSZXVcXTY9g9HAg"
       Via:
       - kong/0.4.2
     body:
       encoding: UTF-8
-      string: '{"name":"CHECKOUT_DROPOUT","callbackUrl":"http://userwebsite.com/dropout","id":"ef006726-a2f8-4ca1-884d-ee492145831a"}'
+      string: '{"message":"customizations removed"}'
     http_version: 
-  recorded_at: Sun, 25 Dec 2016 10:45:27 GMT
+  recorded_at: Sun, 25 Dec 2016 10:51:37 GMT
 recorded_with: VCR 3.0.3

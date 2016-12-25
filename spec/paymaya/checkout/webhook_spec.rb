@@ -1,12 +1,9 @@
 require 'spec_helper'
-require 'vcr'
 
 describe Paymaya::Checkout::Webhook do
-  let(:private_key) { 'private-key' }
   let(:secret_key) { 'sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y' }
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
-  let(:webhooks_url) { "#{base_url}/checkout/v1/webhooks" }
 
   let(:valid_webhook) do
     {
@@ -15,21 +12,16 @@ describe Paymaya::Checkout::Webhook do
     }
   end
 
-  let(:key_header) { "Basic #{Base64.strict_encode64(key).chomp}" }
-
   before :example do
     allow(Paymaya).to receive(:config).and_return(
       double(
         base_url: base_url,
-        private_key: private_key,
         secret_key: secret_key
       )
     )
   end
 
   describe '#register' do
-    let(:key) { secret_key }
-
     it 'registers a webhook' do
       VCR.use_cassette('register_webhook') do
         registered = subject.register(valid_webhook)
@@ -54,7 +46,7 @@ describe Paymaya::Checkout::Webhook do
   describe '#delete' do
     it 'deletes the registered webhook' do
       VCR.use_cassette('delete_webhook') do
-        id = 'f6be27a8-3b96-4cf4-bcfc-7b86f5e7c93d'
+        id = 'd1145ee5-53ac-414a-b5d2-10efd5fd1acb'
         deleted = subject.delete(id)
         expect(deleted[:id]).to eq id
       end

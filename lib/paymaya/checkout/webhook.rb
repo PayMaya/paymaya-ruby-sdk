@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'plissken'
+require 'awrence'
 
 module Paymaya
   module Checkout
@@ -7,8 +8,8 @@ module Paymaya
       def register(name:, callback_url:)
         response = RestClient.post(webhook_url, {
           name: name,
-          callbackUrl: callback_url
-        }.to_json, auth_headers)
+          callback_url: callback_url
+        }.to_camelback_keys.to_json, auth_headers)
         JSON.parse(response).to_snake_keys
       end
 
@@ -44,7 +45,7 @@ module Paymaya
         }
       end
 
-      private :webhook_url
+      private :webhook_url, :auth_headers
     end
   end
 end
