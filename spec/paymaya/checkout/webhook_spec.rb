@@ -25,9 +25,9 @@ describe Paymaya::Checkout::Webhook do
     it 'registers a webhook' do
       VCR.use_cassette('register_webhook') do
         registered = subject.register(valid_webhook)
-        expect(registered).to include :name
-        expect(registered).to include :callback_url
-        expect(registered).to include :id
+        expect(registered).to include 'name'
+        expect(registered).to include 'callbackUrl'
+        expect(registered).to include 'id'
       end
     end
   end
@@ -36,9 +36,9 @@ describe Paymaya::Checkout::Webhook do
     it 'retrieves the webhooks from <base_url>/checkout/v1/webhooks' do
       VCR.use_cassette('retrieve_webhooks') do
         webhooks = subject.retrieve
-        expect(webhooks[0]).to include :name
-        expect(webhooks[0]).to include :callback_url
-        expect(webhooks[0]).to include :id
+        expect(webhooks[0]).to include 'name'
+        expect(webhooks[0]).to include 'callbackUrl'
+        expect(webhooks[0]).to include 'id'
       end
     end
   end
@@ -48,7 +48,7 @@ describe Paymaya::Checkout::Webhook do
       VCR.use_cassette('delete_webhook') do
         id = 'd1145ee5-53ac-414a-b5d2-10efd5fd1acb'
         deleted = subject.delete(id)
-        expect(deleted[:id]).to eq id
+        expect(deleted['id']).to eq id
       end
     end
   end
@@ -59,7 +59,7 @@ describe Paymaya::Checkout::Webhook do
         id = 'd1145ee5-53ac-414a-b5d2-10efd5fd1acb'
         deleted = subject.update(id, 'CHECKOUT_DROPOUT',
           'http://userwebsite.com/checkout_droupout')
-        expect(deleted[:id]).to eq id
+        expect(deleted['id']).to eq id
       end
     end
   end

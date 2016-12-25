@@ -12,17 +12,17 @@ module Paymaya
           custom_title: custom_title,
           color_scheme: color_scheme
         }.to_camelback_keys.to_json, auth_headers)
-        JSON.parse(response).to_snake_keys
+        JSON.parse(response)
       end
 
       def get
         response = RestClient.get(customization_url, auth_headers)
-        JSON.parse(response).to_snake_keys
+        JSON.parse(response)
       end
 
       def remove
         response = RestClient.delete(customization_url, auth_headers)
-        JSON.parse(response).to_snake_keys
+        JSON.parse(response)
       end
 
       def customization_url

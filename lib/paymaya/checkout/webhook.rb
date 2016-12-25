@@ -10,19 +10,17 @@ module Paymaya
           name: name,
           callback_url: callback_url
         }.to_camelback_keys.to_json, auth_headers)
-        JSON.parse(response).to_snake_keys
+        JSON.parse(response)
       end
 
       def retrieve
         response = RestClient.get(webhook_url, auth_headers)
-        JSON.parse(response).map do |elem|
-          elem.to_snake_keys
-        end
+        JSON.parse(response)
       end
 
       def delete(id)
         response = RestClient.delete("#{webhook_url}/#{id}", auth_headers)
-        JSON.parse(response).to_snake_keys
+        JSON.parse(response)
       end
 
       def update(id, name, callback_url)
@@ -30,7 +28,7 @@ module Paymaya
           name: name,
           callbackUrl: callback_url
         }.to_json, auth_headers)
-        JSON.parse(response).to_snake_keys
+        JSON.parse(response)
       end
 
       def webhook_url
