@@ -1,11 +1,5 @@
 require 'spec_helper'
-require 'webmock/rspec'
 require 'vcr'
-
-VCR.configure do |config|
-  config.cassette_library_dir = "fixtures/vcr_cassettes"
-  config.hook_into :webmock # or :fakeweb
-end
 
 describe Paymaya::Checkout::Webhook do
   let(:private_key) { 'private-key' }
@@ -62,6 +56,17 @@ describe Paymaya::Checkout::Webhook do
       VCR.use_cassette('delete_webhook') do
         id = 'f6be27a8-3b96-4cf4-bcfc-7b86f5e7c93d'
         deleted = subject.delete(id)
+        expect(deleted[:id]).to eq id
+      end
+    end
+  end
+
+  describe '#update' do
+    it 'updates the registered webhook' do
+      VCR.use_cassette('update_webhook') do
+        id = 'd1145ee5-53ac-414a-b5d2-10efd5fd1acb'
+        deleted = subject.update(id, 'CHECKOUT_DROPOUT',
+          'http://userwebsite.com/checkout_droupout')
         expect(deleted[:id]).to eq id
       end
     end

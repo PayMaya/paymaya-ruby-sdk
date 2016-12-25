@@ -24,6 +24,14 @@ module Paymaya
         JSON.parse(response).to_snake_keys
       end
 
+      def update(id, name, callback_url)
+        response = RestClient.put("#{webhook_url}/#{id}", {
+          name: name,
+          callbackUrl: callback_url
+        }.to_json, auth_headers)
+        JSON.parse(response).to_snake_keys
+      end
+
       def webhook_url
         "#{Paymaya.config.base_url}/checkout/v1/webhooks"
       end

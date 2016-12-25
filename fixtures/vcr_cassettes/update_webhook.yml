@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y:@pg-sandbox.paymaya.com/checkout/v1/webhooks/f6be27a8-3b96-4cf4-bcfc-7b86f5e7c93d
+    body:
+      encoding: UTF-8
+      string: '{"name":"CHECKOUT_DROPOUT","callbackUrl":"http://userwebsite.com/checkout_droupout"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '84'
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 25 Dec 2016 10:21:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '74'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      Etag:
+      - W/"4a-sMCQrZAm6HsNi/P6fhhJgw"
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":-3,"message":"Requested resource/information not found"}}'
+    http_version: 
+  recorded_at: Sun, 25 Dec 2016 10:21:49 GMT
+- request:
+    method: put
+    uri: https://sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y:@pg-sandbox.paymaya.com/checkout/v1/webhooks/d1145ee5-53ac-414a-b5d2-10efd5fd1acb
+    body:
+      encoding: UTF-8
+      string: '{"name":"CHECKOUT_DROPOUT","callbackUrl":"http://userwebsite.com/checkout_droupout"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '84'
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 25 Dec 2016 10:23:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '128'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      Etag:
+      - W/"80-xUeqJ1gw80zZbSVamWk4+Q"
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"name":"CHECKOUT_DROPOUT","callbackUrl":"http://userwebsite.com/checkout_droupout","id":"d1145ee5-53ac-414a-b5d2-10efd5fd1acb"}'
+    http_version: 
+  recorded_at: Sun, 25 Dec 2016 10:23:03 GMT
+recorded_with: VCR 3.0.3
