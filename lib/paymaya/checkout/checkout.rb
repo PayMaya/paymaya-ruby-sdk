@@ -20,6 +20,11 @@ module Paymaya
         JSON.parse(response)
       end
 
+      def retrieve(id)
+        response = RestClient.get("#{checkout_url}/#{id}", auth_headers)
+        JSON.parse(response)
+      end
+
       def checkout_url
         "#{Paymaya.config.base_url}/checkout/v1/checkouts"
       end

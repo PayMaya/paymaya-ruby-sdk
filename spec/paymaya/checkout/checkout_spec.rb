@@ -90,4 +90,14 @@ describe Paymaya::Checkout::Checkout do
       end
     end
   end
+
+  describe '#retrieve' do
+    it do
+      VCR.use_cassette('retrieve_checkout') do
+        id = 'f739d287-7cbf-44eb-8a59-0e64562521b2'
+        checkout = subject.retrieve(id)
+        expect(checkout).to include 'id'
+      end
+    end
+  end
 end

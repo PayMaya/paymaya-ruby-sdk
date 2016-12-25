@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y:@pg-sandbox.paymaya.com/checkout/v1/checkouts/f739d287-7cbf-44eb-8a59-0e64562521b2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 25 Dec 2016 22:31:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1625'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      Etag:
+      - W/"659-zhsYzSOUSZgcL+ybaEP1Tg"
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"merchant":{"currency":"PHP","locale":"en","name":"PayMaya Merchant","email":"paymaya.merchant@gmail.com","homepageUrl":"https://paymaya.com","isEmailToMerchantEnabled":true,"isEmailToBuyerEnabled":true,"isPageCustomized":false,"supportedSchemes":["Visa","Mastercard"]},"buyer":{"firstName":"Juan","middleName":"dela","lastName":"Cruz","contact":{"phone":"+63(2)1234567890","email":"paymayabuyer1@gmail.com"},"shippingAddress":{"line1":"9F
+        Robinsons Cybergate 3","line2":"Pioneer Street","city":"Mandaluyong City","state":"Metro
+        Manila","zipCode":"12345","countryCode":"PH"},"billingAddress":{"line1":"9F
+        Robinsons Cybergate 3","line2":"Pioneer Street","city":"Mandaluyong City","state":"Metro
+        Manila","zipCode":"12345","countryCode":"PH"},"ipAddress":"125.60.148.241"},"items":[{"name":"Canvas
+        Slip Ons","code":"CVG-096732","description":"Shoes","quantity":"3","amount":{"value":"1621.10","details":{"discount":"100.00","subtotal":"1721.10"}},"totalAmount":{"value":"4863.30","details":{"discount":"300.00","subtotal":"5163.30"}}}],"metadata":{},"status":"CREATED","id":"f739d287-7cbf-44eb-8a59-0e64562521b2","totalAmount":{"currency":"PHP","value":"1234.56"},"requestReferenceNumber":"000141386713","transactionReferenceNumber":null,"receiptNumber":null,"createdAt":"2016-12-25T22:22:30.985Z","updatedAt":"2016-12-25T22:22:30.985Z","expiredAt":"2016-12-25T23:22:30.966Z","paymentType":"CREDIT_CARD","paymentStatus":"PENDING","redirectUrl":{"success":"http://www.askthemaya.com/","failure":"http://www.askthemaya.com/failure?id=6319921","cancel":"http://www.askthemaya.com/cancel?id=6319921"},"voidStatus":"NOT_APPLICABLE"}'
+    http_version: 
+  recorded_at: Sun, 25 Dec 2016 22:31:49 GMT
+recorded_with: VCR 3.0.3
