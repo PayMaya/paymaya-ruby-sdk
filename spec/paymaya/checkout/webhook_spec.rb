@@ -57,8 +57,8 @@ describe Paymaya::Checkout::Webhook do
     it 'updates the registered webhook' do
       VCR.use_cassette('update_webhook') do
         id = 'd1145ee5-53ac-414a-b5d2-10efd5fd1acb'
-        deleted = subject.update(id, 'CHECKOUT_DROPOUT',
-          'http://userwebsite.com/checkout_droupout')
+        deleted = subject.update(id: id, name: 'CHECKOUT_DROPOUT',
+          callback_url: 'http://userwebsite.com/checkout_droupout')
         expect(deleted['id']).to eq id
       end
     end

@@ -1,6 +1,5 @@
 require 'rest-client'
 require 'plissken'
-require 'awrence'
 
 module Paymaya
   module Checkout
@@ -23,7 +22,7 @@ module Paymaya
         JSON.parse(response)
       end
 
-      def update(id, name, callback_url)
+      def update(id:, name:, callback_url:)
         response = RestClient.put("#{webhook_url}/#{id}", {
           name: name,
           callbackUrl: callback_url

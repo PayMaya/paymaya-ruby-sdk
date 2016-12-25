@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172:@pg-sandbox.paymaya.com/checkout/v1/checkouts
+    body:
+      encoding: UTF-8
+      string: '{"totalAmount":{"currency":"PHP","value":"1234.56"},"buyer":{"firstName":"Juan","middleName":"dela","lastName":"Cruz","contact":{"phone":"+63(2)1234567890","email":"paymayabuyer1@gmail.com"},"shippingAddress":{"line1":"9F
+        Robinsons Cybergate 3","line2":"Pioneer Street","city":"Mandaluyong City","state":"Metro
+        Manila","zipCode":"12345","countryCode":"PH"},"billingAddress":{"line1":"9F
+        Robinsons Cybergate 3","line2":"Pioneer Street","city":"Mandaluyong City","state":"Metro
+        Manila","zipCode":"12345","countryCode":"PH"},"ipAddress":"125.60.148.241"},"items":[{"name":"Canvas
+        Slip Ons","code":"CVG-096732","description":"Shoes","quantity":"3","amount":{"value":"1621.10","details":{"discount":"100.00","subtotal":"1721.10"}},"totalAmount":{"value":"4863.30","details":{"discount":"300.00","subtotal":"5163.30"}}}],"redirectUrl":{"success":"http://www.askthemaya.com/","failure":"http://www.askthemaya.com/failure?id=6319921","cancel":"http://www.askthemaya.com/cancel?id=6319921"},"requestReferenceNumber":"000141386713","metadata":{}}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1036'
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 25 Dec 2016 22:22:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '158'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - X-HTTP-Method-Override
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      Etag:
+      - W/"9e-I1P2Hi+OepQGimCn6+sz3g"
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"checkoutId":"f739d287-7cbf-44eb-8a59-0e64562521b2","redirectUrl":"https://sandbox-checkout-v2.paymaya.com/checkout?id=f739d287-7cbf-44eb-8a59-0e64562521b2"}'
+    http_version: 
+  recorded_at: Sun, 25 Dec 2016 22:22:30 GMT
+recorded_with: VCR 3.0.3
