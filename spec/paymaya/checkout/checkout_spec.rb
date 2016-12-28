@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'awrence'
 
 describe Paymaya::Checkout::Checkout do
   let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
@@ -14,36 +13,36 @@ describe Paymaya::Checkout::Checkout do
         value: '1234.56'
       },
       buyer: {
-        firstName: 'Juan',
-        middleName: 'dela',
-        lastName: 'Cruz',
+        first_name: 'Juan',
+        middle_name: 'dela',
+        last_name: 'Cruz',
         contact: {
           phone: '+63(2)1234567890',
           email: 'paymayabuyer1@gmail.com'
-        }.to_snake_keys,
-        shippingAddress: {
+        },
+        shipping_address: {
           line1: '9F Robinsons Cybergate 3',
           line2: 'Pioneer Street',
           city: 'Mandaluyong City',
           state: 'Metro Manila',
-          zipCode: '12345',
-          countryCode: 'PH'
-        }.to_snake_keys,
-        billingAddress: {
+          zip_code: '12345',
+          country_code: 'PH'
+        },
+        billing_address: {
           line1: '9F Robinsons Cybergate 3',
           line2: 'Pioneer Street',
           city: 'Mandaluyong City',
           state: 'Metro Manila',
-          zipCode: '12345',
-          countryCode: 'PH'
-        }.to_snake_keys,
-        ipAddress: '125.60.148.241'
-      }.to_snake_keys,
-      redirectUrl: {
+          zip_code: '12345',
+          country_code: 'PH'
+        },
+        ip_address: '125.60.148.241'
+      },
+      redirect_url: {
         success: 'http://www.askthemaya.com/',
         failure: 'http://www.askthemaya.com/failure?id=6319921',
         cancel: 'http://www.askthemaya.com/cancel?id=6319921'
-      }.to_snake_keys,
+      },
       items: [
         {
           name: 'Canvas Slip Ons',
@@ -57,18 +56,18 @@ describe Paymaya::Checkout::Checkout do
               subtotal: '1721.10'
             }
           },
-          totalAmount: {
+          total_amount: {
             value: '4863.30',
             details: {
               discount: '300.00',
               subtotal: '5163.30'
             }
           }
-        }.to_snake_keys
+        }
       ],
-      requestReferenceNumber: '000141386713',
+      request_reference_number: '000141386713',
       metadata: {}
-    }.to_snake_keys
+    }
   end
 
   before :example do
@@ -85,8 +84,8 @@ describe Paymaya::Checkout::Checkout do
     it do
       VCR.use_cassette('initiate_checkout') do
         checkout = subject.initiate(valid_checkout)
-        expect(checkout).to include 'checkoutId'
-        expect(checkout).to include 'redirectUrl'
+        expect(checkout).to include :checkout_id
+        expect(checkout).to include :redirect_url
       end
     end
   end
@@ -96,7 +95,7 @@ describe Paymaya::Checkout::Checkout do
       VCR.use_cassette('retrieve_checkout') do
         id = 'f739d287-7cbf-44eb-8a59-0e64562521b2'
         checkout = subject.retrieve(id)
-        expect(checkout).to include 'id'
+        expect(checkout).to include :id
       end
     end
   end

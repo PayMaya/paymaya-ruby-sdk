@@ -1,5 +1,8 @@
 require 'rest-client'
 require 'plissken'
+require 'awrence'
+
+require 'paymaya/helper'
 
 module Paymaya
   module Checkout
@@ -17,12 +20,12 @@ module Paymaya
         end
         payload[:metadata] = metadata unless metadata.nil?
         response = RestClient.post(checkout_url, payload.to_camelback_keys.to_json, auth_headers_2)
-        JSON.parse(response)
+        Helper.snakify(JSON.parse(response))
       end
 
       def retrieve(id)
         response = RestClient.get("#{checkout_url}/#{id}", auth_headers)
-        JSON.parse(response)
+        Helper.snakify(JSON.parse(response))
       end
 
       def checkout_url

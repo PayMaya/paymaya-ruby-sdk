@@ -21,4 +21,38 @@ describe Paymaya::Helper do
       expect(pf[:mst]).to eq submerchant_state_code
     end
   end
+
+  describe '#snakify' do
+    it 'sets hash members of an array to snake case' do
+      input = ['a', {
+        'aRandomWord' => 'someRandomPhrase',
+        'anotherArray' => [
+          {
+            'anotherHash' => 'b'
+          }
+        ]
+      }, 'b']
+      snakified = subject.snakify(input)
+      expect(snakified[1]).to include :a_random_word
+      expect(snakified[1]).to include :another_array
+      expect(snakified[1][:another_array][0]).to include :another_hash
+    end
+  end
+
+  describe '#camelify' do
+    it 'sets hash members of an array to camelback case' do
+      input = ['a', {
+        'a_random_word' => 'someRandomPhrase',
+        'another_array' => [
+          {
+            'another_hash' => 'b'
+          }
+        ]
+      }, 'b']
+      camelified = subject.camelify(input)
+      expect(camelified[1]).to include 'aRandomWord'
+      expect(camelified[1]).to include 'anotherArray'
+      expect(camelified[1]['anotherArray'][0]).to include 'anotherHash'
+    end
+  end
 end
