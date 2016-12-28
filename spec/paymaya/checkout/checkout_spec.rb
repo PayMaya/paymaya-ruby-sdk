@@ -80,10 +80,10 @@ describe Paymaya::Checkout::Checkout do
     )
   end
 
-  describe '#initiate' do
+  describe '#create' do
     it do
-      VCR.use_cassette('initiate_checkout') do
-        checkout = subject.initiate(valid_checkout)
+      VCR.use_cassette('create_checkout') do
+        checkout = subject.create(valid_checkout)
         expect(checkout).to include :checkout_id
         expect(checkout).to include :redirect_url
       end

@@ -2,7 +2,7 @@ require 'rest-client'
 require 'plissken'
 
 module Paymaya
-  module Checkout
+  module PaymentVault
     class Webhook
       def register(name:, callback_url:)
         response = RestClient.post(webhook_url, {
@@ -17,12 +17,17 @@ module Paymaya
         JSON.parse(response)
       end
 
+      def retrieve(id)
+        response = RestClient.get("#{webhook_url}/#{id}", auth_headers)
+        JSON.parse(response)
+      end
+
       def delete(id)
         response = RestClient.delete("#{webhook_url}/#{id}", auth_headers)
         JSON.parse(response)
       end
 
-      def update(id, name:, callback_url:)
+      def update(id:, name:, callback_url:)
         response = RestClient.put("#{webhook_url}/#{id}", {
           name: name,
           callbackUrl: callback_url
@@ -31,7 +36,7 @@ module Paymaya
       end
 
       def webhook_url
-        "#{Paymaya.config.base_url}/checkout/v1/webhooks"
+        "#{Paymaya.config.base_url}/payments/v1/webhooks"
       end
 
       def auth_headers

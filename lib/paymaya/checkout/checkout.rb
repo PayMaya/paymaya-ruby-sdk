@@ -7,7 +7,7 @@ require 'paymaya/helper'
 module Paymaya
   module Checkout
     class Checkout
-      def initiate(total_amount:, buyer:, items:, redirect_url: nil,
+      def create(total_amount:, buyer:, items:, redirect_url: nil,
         request_reference_number: nil, metadata: nil)
         payload = {
           total_amount: total_amount,

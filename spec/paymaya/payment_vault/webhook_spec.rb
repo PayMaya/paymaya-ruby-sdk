@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'awrence'
 
 describe Paymaya::PaymentVault::Webhook do
   let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
@@ -9,9 +8,9 @@ describe Paymaya::PaymentVault::Webhook do
 
   let(:valid_webhook) do
     {
-      "name": '3DS_PAYMENT_SUCCESS',
-      "callbackUrl": 'http://shop.someserver.com/success'
-    }.to_snake_keys
+      name: '3DS_PAYMENT_SUCCESS',
+      callback_url: 'http://shop.someserver.com/success'
+    }
   end
 
   before :example do
@@ -24,10 +23,10 @@ describe Paymaya::PaymentVault::Webhook do
     )
   end
 
-  describe '#create' do
+  describe '#register' do
     it do
-      VCR.use_cassette('create_webhook') do
-        webhook = subject.create(valid_webhook)
+      VCR.use_cassette('register_payment_vault_webhook') do
+        webhook = subject.register(valid_webhook)
         expect(webhook).to include :id
       end
     end
@@ -35,8 +34,8 @@ describe Paymaya::PaymentVault::Webhook do
 
   describe '#list' do
     it do
-      VCR.use_cassette('list_webhooks') do
-        webhook = subject.list(id)[0]
+      VCR.use_cassette('list_payment_vault_webhooks') do
+        webhook = subject.list[0]
         expect(webhook).to include :id
       end
     end
@@ -44,7 +43,7 @@ describe Paymaya::PaymentVault::Webhook do
 
   describe '#retrieve' do
     it do
-      VCR.use_cassette('retrieve_webhook') do
+      VCR.use_cassette('retrieve_payment_vault_webhook') do
         id = ''
         webhook = subject.retrieve(id)
         expect(webhook).to include :id
@@ -54,7 +53,7 @@ describe Paymaya::PaymentVault::Webhook do
 
   describe '#update' do
     it do
-      VCR.use_cassette('update_webhook') do
+      VCR.use_cassette('update_payment_vault_webhook') do
         id = ''
         webhook = subject.update(id, valid_webhook)
         expect(webhook).to include :state
@@ -64,7 +63,7 @@ describe Paymaya::PaymentVault::Webhook do
 
   describe '#delete' do
     it do
-      VCR.use_cassette('delete_webhook') do
+      VCR.use_cassette('delete_payment_vault_webhook') do
         id = ''
         webhook = subject.delete(id)
         expect(webhook).to include :id
