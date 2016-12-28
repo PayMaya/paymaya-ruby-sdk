@@ -1,5 +1,6 @@
 require 'rest-client'
-require 'plissken'
+
+require 'paymaya/helper'
 
 module Paymaya
   module Checkout
@@ -9,17 +10,17 @@ module Paymaya
           name: name,
           callback_url: callback_url
         }.to_camelback_keys.to_json, auth_headers)
-        JSON.parse(response)
+        Helper.snakify(JSON.parse(response))
       end
 
       def list
         response = RestClient.get(webhook_url, auth_headers)
-        JSON.parse(response)
+        Helper.snakify(JSON.parse(response))
       end
 
       def delete(id)
         response = RestClient.delete("#{webhook_url}/#{id}", auth_headers)
-        JSON.parse(response)
+        Helper.snakify(JSON.parse(response))
       end
 
       def update(id, name:, callback_url:)
@@ -27,7 +28,7 @@ module Paymaya
           name: name,
           callbackUrl: callback_url
         }.to_json, auth_headers)
-        JSON.parse(response)
+        Helper.snakify(JSON.parse(response))
       end
 
       def webhook_url

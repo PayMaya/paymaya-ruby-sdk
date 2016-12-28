@@ -1,8 +1,9 @@
 require 'spec_helper'
+require 'paymaya/helper'
 
 describe Paymaya::PaymentVault::Webhook do
-  let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
-  let(:secret_key) { 'sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y' }
+  let(:public_key) { 'pk-EpTu7LXv8mwuONutYflskyYdqRSx1Ing9K3V3JtBRqB' }
+  let(:secret_key) { 'sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc' }
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
 
@@ -44,7 +45,7 @@ describe Paymaya::PaymentVault::Webhook do
   describe '#retrieve' do
     it do
       VCR.use_cassette('retrieve_payment_vault_webhook') do
-        id = ''
+        id = '674a08c7-e68e-4386-a5cb-750db1d3675a'
         webhook = subject.retrieve(id)
         expect(webhook).to include :id
       end
@@ -54,9 +55,9 @@ describe Paymaya::PaymentVault::Webhook do
   describe '#update' do
     it do
       VCR.use_cassette('update_payment_vault_webhook') do
-        id = ''
+        id = '674a08c7-e68e-4386-a5cb-750db1d3675a'
         webhook = subject.update(id, valid_webhook)
-        expect(webhook).to include :state
+        expect(webhook).to include :id
       end
     end
   end
@@ -64,7 +65,7 @@ describe Paymaya::PaymentVault::Webhook do
   describe '#delete' do
     it do
       VCR.use_cassette('delete_payment_vault_webhook') do
-        id = ''
+        id = '674a08c7-e68e-4386-a5cb-750db1d3675a'
         webhook = subject.delete(id)
         expect(webhook).to include :id
       end

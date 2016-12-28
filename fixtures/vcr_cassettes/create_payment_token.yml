@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://pk-EpTu7LXv8mwuONutYflskyYdqRSx1Ing9K3V3JtBRqB:@pg-sandbox.paymaya.com/payments/v1/payment-tokens
+    body:
+      encoding: UTF-8
+      string: '{"card":{"number":"5123456789012346","expMonth":"05","expYear":"2017","cvc":"111"}}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '83'
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 28 Dec 2016 17:10:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '281'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"119-d4qrzIz3LWFbRkoy05WnEg"
+      Vary:
+      - X-HTTP-Method-Override
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"state":"AVAILABLE","paymentTokenId":"PCAIcF56aWetOoYGlsBjGzYO9yoRN9s54PeLHP8LD0Xdu43rSEuV0MQwHNDgVAZVc4bIDXThsT0265erRSULaXyueB62yqPDcgHOMYiGAHXo5jNcmQa4ccMjpWpPOY4PybEacFEb3QlK8te6Ui1u5lX9E5Y95ekl4Q","createdAt":"2016-12-28T17:10:49.000Z","updatedAt":"2016-12-28T17:10:49.000Z"}'
+    http_version: 
+  recorded_at: Wed, 28 Dec 2016 17:10:58 GMT
+recorded_with: VCR 3.0.3

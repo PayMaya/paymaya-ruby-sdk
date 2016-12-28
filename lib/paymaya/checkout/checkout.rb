@@ -1,6 +1,4 @@
 require 'rest-client'
-require 'plissken'
-require 'awrence'
 
 require 'paymaya/helper'
 
@@ -12,7 +10,7 @@ module Paymaya
         payload = {
           total_amount: total_amount,
           buyer: buyer,
-          items: items.map(&:to_camelback_keys)
+          items: Helper.camelify(items)
         }
         payload[:redirect_url] = redirect_url unless redirect_url.nil?
         unless request_reference_number.nil?

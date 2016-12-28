@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc:@pg-sandbox.paymaya.com/payments/v1/webhooks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 28 Dec 2016 17:16:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '833'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"341-DkL+QU2Uc5PEPR1tn9yFng"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '[{"id":"62fd417c-ce3e-4228-b2f1-cbd0e00ecf71","name":"RECURRING_PAYMENT_FAILURE","callbackUrl":"http://shop.someserver.com/recurring_failed","createdAt":"2016-10-26T02:47:34.000Z","updatedAt":"2016-10-26T02:47:34.000Z"},{"id":"8dc3dcc6-d9c5-45b0-92c5-cb0375015675","name":"RECURRING_PAYMENT_SUCCESS","callbackUrl":"http://80bc6ebe.ngrok.io/success","createdAt":"2016-10-26T02:47:16.000Z","updatedAt":"2016-11-16T05:00:29.000Z"},{"id":"42ca442b-f08a-4814-b490-39dde7bb3291","name":"3DS_PAYMENT_FAILURE","callbackUrl":"http://80bc6ebe.ngrok.io/failed","createdAt":"2016-10-25T03:41:55.000Z","updatedAt":"2016-11-16T05:01:04.000Z"},{"id":"674a08c7-e68e-4386-a5cb-750db1d3675a","name":"3DS_PAYMENT_SUCCESS","callbackUrl":"http://shop.someserver.com/success","createdAt":"2016-11-17T04:57:50.000Z","updatedAt":"2016-11-17T04:57:50.000Z"}]'
+    http_version: 
+  recorded_at: Wed, 28 Dec 2016 17:16:43 GMT
+recorded_with: VCR 3.0.3

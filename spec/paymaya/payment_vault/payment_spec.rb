@@ -1,37 +1,36 @@
 require 'spec_helper'
-require 'awrence'
 
 describe Paymaya::PaymentVault::Payment do
-  let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
-  let(:secret_key) { 'sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y' }
+  let(:public_key) { 'pk-EpTu7LXv8mwuONutYflskyYdqRSx1Ing9K3V3JtBRqB' }
+  let(:secret_key) { 'sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc' }
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
 
   let(:valid_payment) do
     {
-      paymentTokenId: '68aKLAN64CXK7XWDA1HwSE6COo',
-      totalAmount: {
+      payment_token_id: 'PCAIcF56aWetOoYGlsBjGzYO9yoRN9s54PeLHP8LD0Xdu43rSEuV0MQwHNDgVAZVc4bIDXThsT0265erRSULaXyueB62yqPDcgHOMYiGAHXo5jNcmQa4ccMjpWpPOY4PybEacFEb3QlK8te6Ui1u5lX9E5Y95ekl4Q',
+      total_amount: {
         amount: 100,
         currency: 'PHP'
       },
       buyer: {
-        firstName: 'Ysa',
-        middleName: 'Cruz',
-        lastName: 'Santos',
+        first_name: 'Ysa',
+        middle_name: 'Cruz',
+        last_name: 'Santos',
         contact: {
           phone: '+63(2)1234567890',
           email: 'ysadcsantos@gmail.com'
         },
-        billingAddress: {
+        billing_address: {
           line1: '9F Robinsons Cybergate 3',
           line2: 'Pioneer Street',
           city: 'Mandaluyong City',
           state: 'Metro Manila',
-          zipCode: '12345',
-          countryCode: 'PH'
+          zip_code: '12345',
+          country_code: 'PH'
         }
       }
-    }.to_snake_keys
+    }
   end
 
   before :example do
@@ -56,7 +55,7 @@ describe Paymaya::PaymentVault::Payment do
   describe '#retrieve' do
     it do
       VCR.use_cassette('retrieve_payment') do
-        id = ''
+        id = '4873e908-0a78-416b-b2f4-432080e6ee85'
         payment = subject.retrieve(id)
         expect(payment).to include :status
       end
@@ -66,39 +65,40 @@ describe Paymaya::PaymentVault::Payment do
   describe '#void' do
     it do
       VCR.use_cassette('void_payment') do
-        id = ''
-        payment = subject.void(id)
+        id = '4873e908-0a78-416b-b2f4-432080e6ee85'
+        reason = 'Void reason'
+        payment = subject.void(id, reason)
         expect(payment).to include :status
       end
     end
   end
 
-  describe '#refund' do
+  xdescribe '#refund' do
     it do
       VCR.use_cassette('refund_payment') do
-        id = ''
-        payment = subject.refund(id)
-        expect(payment).to include :status
+        payment = 'a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b'
+        refund = subject.refund(id)
+        expect(refund).to include :status
       end
     end
   end
 
-  describe '#retrieve_refunds' do
+  xdescribe '#retrieve_refunds' do
     it do
       VCR.use_cassette('retrieve_refunds') do
-        id = ''
-        payment = subject.retrieve_refunds(id)[0]
-        expect(payment).to include :status
+        payment = 'a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b'
+        refund = subject.retrieve_refunds(id)[0]
+        expect(refund).to include :status
       end
     end
   end
 
-  describe '#retrieve_refund' do
+  xdescribe '#retrieve_refund' do
     it do
       VCR.use_cassette('retrieve_refund') do
-        id = ''
-        payment = subject.retrieve_refunds(id)
-        expect(payment).to include :status
+        payment = 'a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b'
+        refund = subject.retrieve_refund(id, id)
+        expect(refund).to include :status
       end
     end
   end

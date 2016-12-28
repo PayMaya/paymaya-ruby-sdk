@@ -2,8 +2,8 @@ require 'spec_helper'
 require 'awrence'
 
 describe Paymaya::PaymentVault::CardVault::Card do
-  let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
-  let(:secret_key) { 'sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y' }
+  let(:public_key) { 'pk-Xu1VAKiNdLj3fyQ7MT4kRYAQ5Oe0RjBcbN5MfcRevSn' }
+  let(:secret_key) { 'sk-dOxQfFiCZ7ImhHAsLLTVPpuVt3XBtqPzbcpeJa3TBJv' }
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
 
