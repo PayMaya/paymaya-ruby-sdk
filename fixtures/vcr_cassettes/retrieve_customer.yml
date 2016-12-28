@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sk-dOxQfFiCZ7ImhHAsLLTVPpuVt3XBtqPzbcpeJa3TBJv:@pg-sandbox.paymaya.com/payments/v1/customers/c52866a8-c30f-4233-afd4-473b069ac751
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 28 Dec 2016 19:15:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '456'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"1c8-8cxne/ywLsVx/7sJhTBGCA"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"id":"c52866a8-c30f-4233-afd4-473b069ac751","firstName":"Ysabelle","middleName":"Cruz","lastName":"Santos","contact":{"phone":"+63(2)1234567890","email":"ysadcsantos@gmail.com"},"billingAddress":{"line1":"9F
+        Robinsons Cybergate 3","line2":"Pioneer Street","city":"Mandaluyong City","state":"Metro
+        Manila","zipCode":"12345","countryCode":"PH"},"sex":"F","birthday":"1987-01-01","createdAt":"2016-12-28T19:15:12.000Z","updatedAt":"2016-12-28T19:15:42.000Z"}'
+    http_version: 
+  recorded_at: Wed, 28 Dec 2016 19:15:47 GMT
+recorded_with: VCR 3.0.3

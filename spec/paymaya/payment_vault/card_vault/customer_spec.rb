@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'awrence'
 
 describe Paymaya::PaymentVault::CardVault::Customer do
   let(:public_key) { 'pk-Xu1VAKiNdLj3fyQ7MT4kRYAQ5Oe0RjBcbN5MfcRevSn' }
@@ -9,25 +8,25 @@ describe Paymaya::PaymentVault::CardVault::Customer do
 
   let(:valid_customer) do
     {
-      'firstName': 'Ysabelle',
-      'middleName': 'Cruz',
-      'lastName': 'Santos',
-      'birthday': '1987-0101',
-      'sex': 'F',
-      'contact': {
-        'phone': '+63(2)1234567890',
-        'email': 'ysadcsantos@gmail.com'
+      first_name: 'Ysabelle',
+      middle_name: 'Cruz',
+      last_name: 'Santos',
+      birthday: '1987-01-01',
+      sex: 'F',
+      contact: {
+        phone: '+63(2)1234567890',
+        email: 'ysadcsantos@gmail.com'
       },
-      'billingAddress': {
-        'line1': '9F Robinsons Cybergate 3',
-        'line2': 'Pioneer Street',
-        'city': 'Mandaluyong City',
-        'state': 'Metro Manila',
-        'zipCode': '12345',
-        'countryCode': 'PH'
+      billing_address: {
+        line1: '9F Robinsons Cybergate 3',
+        line2: 'Pioneer Street',
+        city: 'Mandaluyong City',
+        state: 'Metro Manila',
+        zip_code: '12345',
+        country_code: 'PH'
       },
-      'metadata': {}
-    }.to_snake_keys
+      metadata: {}
+    }
   end
 
   before :example do
@@ -52,7 +51,7 @@ describe Paymaya::PaymentVault::CardVault::Customer do
   describe '#retrieve' do
     it do
       VCR.use_cassette('retrieve_customer') do
-        id = ''
+        id = 'c52866a8-c30f-4233-afd4-473b069ac751'
         customer = subject.retrieve(id)
         expect(customer).to include :first_name
       end
@@ -62,7 +61,7 @@ describe Paymaya::PaymentVault::CardVault::Customer do
   describe '#update' do
     it do
       VCR.use_cassette('update_customer') do
-        id = ''
+        id = 'c52866a8-c30f-4233-afd4-473b069ac751'
         customer = subject.update(id, valid_customer)
         expect(customer).to include :first_name
       end
@@ -72,7 +71,7 @@ describe Paymaya::PaymentVault::CardVault::Customer do
   describe '#delete' do
     it do
       VCR.use_cassette('delete_customer') do
-        id = ''
+        id = 'c52866a8-c30f-4233-afd4-473b069ac751'
         customer = subject.delete(id)
         expect(customer).to include :first_name
       end
