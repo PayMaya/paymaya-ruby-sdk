@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc:@pg-sandbox.paymaya.com/payments/v1/customers/5f39f980-225f-4805-b61f-50e84ce3fcdf/cards/wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU/subscriptions
+    body:
+      encoding: UTF-8
+      string: '{"description":"Test subscription","interval":"DAY","intervalCount":1,"startDate":"2016-12-30","endDate":null,"totalAmount":{"amount":100,"currency":"PHP"}}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '156'
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Dec 2016 03:59:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '331'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"14b-RdgYguQAIIFRChxpp9PVeg"
+      Vary:
+      - X-HTTP-Method-Override
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"id":"e42ac501-5538-461e-80a6-e59ef3884afc","description":"Test subscription","status":"ACTIVE","amount":"100","currency":"PHP","interval":"DAY","metadata":null,"intervalCount":1,"startDate":"2016-12-30T00:00:00.000Z","endDate":null,"cancelledAt":null,"createdAt":"2016-12-29T03:59:37.000Z","updatedAt":"2016-12-29T03:59:37.000Z"}'
+    http_version: 
+  recorded_at: Thu, 29 Dec 2016 03:59:36 GMT
+recorded_with: VCR 3.0.3

@@ -1,9 +1,8 @@
 require 'spec_helper'
-require 'awrence'
 
 describe Paymaya::PaymentVault::CardVault::Payment do
-  let(:public_key) { 'pk-Xu1VAKiNdLj3fyQ7MT4kRYAQ5Oe0RjBcbN5MfcRevSn' }
-  let(:secret_key) { 'sk-dOxQfFiCZ7ImhHAsLLTVPpuVt3XBtqPzbcpeJa3TBJv' }
+  let(:public_key) { 'pk-EpTu7LXv8mwuONutYflskyYdqRSx1Ing9K3V3JtBRqB' }
+  let(:secret_key) { 'sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc' }
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
 
@@ -16,8 +15,8 @@ describe Paymaya::PaymentVault::CardVault::Payment do
     }
   end
 
-  let(:card_id) { '' }
-  let(:customer_id) { '' }
+  let(:customer_id) { '5f39f980-225f-4805-b61f-50e84ce3fcdf' }
+  let(:card_token) { 'wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU' }
 
   before :example do
     allow(Paymaya).to receive(:config).and_return(
@@ -31,8 +30,8 @@ describe Paymaya::PaymentVault::CardVault::Payment do
 
   describe '#create' do
     it do
-      VCR.use_cassette('create_payment') do
-        payment = subject.create(valid_payment)
+      VCR.use_cassette('create_card_vault_payment') do
+        payment = subject.create(customer_id, card_token, valid_payment)
         expect(payment).to include :id
       end
     end

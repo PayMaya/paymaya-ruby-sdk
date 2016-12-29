@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://pk-EpTu7LXv8mwuONutYflskyYdqRSx1Ing9K3V3JtBRqB:@pg-sandbox.paymaya.com/payments/v1/payment-tokens
+    method: get
+    uri: https://sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc:@pg-sandbox.paymaya.com/payments/v1/subscriptions/e42ac501-5538-461e-80a6-e59ef3884afc
     body:
-      encoding: UTF-8
-      string: '{"card":{"number":"5123456789012346","expMonth":"05","expYear":"2017","cvc":"111"}}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - "*/*"
@@ -15,8 +15,6 @@ http_interactions:
       - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
       Content-Type:
       - application/json
-      Content-Length:
-      - '83'
       Host:
       - pg-sandbox.paymaya.com
   response:
@@ -25,19 +23,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 29 Dec 2016 02:41:24 GMT
+      - Thu, 29 Dec 2016 04:07:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '283'
+      - '331'
       Connection:
       - close
       Access-Control-Allow-Origin:
       - "*"
       Etag:
-      - W/"11b-qoqefhusBYnP5xhEj8CCOQ"
-      Vary:
-      - X-HTTP-Method-Override
+      - W/"14b-RdgYguQAIIFRChxpp9PVeg"
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -48,7 +44,7 @@ http_interactions:
       - kong/0.4.2
     body:
       encoding: UTF-8
-      string: '{"state":"AVAILABLE","paymentTokenId":"wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU","createdAt":"2016-12-29T02:41:24.000Z","updatedAt":"2016-12-29T02:41:24.000Z"}'
+      string: '{"id":"e42ac501-5538-461e-80a6-e59ef3884afc","description":"Test subscription","status":"ACTIVE","amount":"100","currency":"PHP","interval":"DAY","metadata":null,"intervalCount":1,"startDate":"2016-12-30T00:00:00.000Z","endDate":null,"cancelledAt":null,"createdAt":"2016-12-29T03:59:37.000Z","updatedAt":"2016-12-29T03:59:37.000Z"}'
     http_version: 
-  recorded_at: Thu, 29 Dec 2016 02:41:24 GMT
+  recorded_at: Thu, 29 Dec 2016 04:07:58 GMT
 recorded_with: VCR 3.0.3

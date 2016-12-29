@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"totalAmount":{"amount":100,"currency":"PHP"},"buyer":{"firstName":"Ysa","middleName":"Cruz","lastName":"Santos","contact":{"phone":"+63(2)1234567890","email":"ysadcsantos@gmail.com"},"billingAddress":{"line1":"9F
         Robinsons Cybergate 3","line2":"Pioneer Street","city":"Mandaluyong City","state":"Metro
-        Manila","zipCode":"12345","countryCode":"PH"}},"paymentTokenId":"PCAIcF56aWetOoYGlsBjGzYO9yoRN9s54PeLHP8LD0Xdu43rSEuV0MQwHNDgVAZVc4bIDXThsT0265erRSULaXyueB62yqPDcgHOMYiGAHXo5jNcmQa4ccMjpWpPOY4PybEacFEb3QlK8te6Ui1u5lX9E5Y95ekl4Q"}'
+        Manila","zipCode":"12345","countryCode":"PH"}},"paymentTokenId":"ikBrcKmHEBsKQM99moUmyr48TqWj8q1eB6WXCxSFwTNOCURTvCLWxbYx4shMXMZEh2Vg5D3vTY1sqUCOsmAyPqMir6GUqolDEdrJSiaovsZONvUufqUgIa2SRH6bL4k9G3OMNho2S86E5OeSHtNFnduqnzQInTGU"}'
     headers:
       Accept:
       - "*/*"
@@ -18,7 +18,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '533'
+      - '531'
       Host:
       - pg-sandbox.paymaya.com
   response:
@@ -27,17 +27,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 28 Dec 2016 17:11:24 GMT
+      - Wed, 28 Dec 2016 19:30:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '425'
+      - '423'
       Connection:
       - close
       Access-Control-Allow-Origin:
       - "*"
       Etag:
-      - W/"1a9-FVGD4rOgVb2iV8fvyRjQyw"
+      - W/"1a7-NDSme4jvERSexmaFTbILrg"
       Vary:
       - X-HTTP-Method-Override
       X-Content-Type-Options:
@@ -50,8 +50,8 @@ http_interactions:
       - kong/0.4.2
     body:
       encoding: UTF-8
-      string: '{"id":"a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b","isPaid":true,"status":"PAYMENT_SUCCESS","amount":100,"currency":"PHP","createdAt":"2016-12-28T17:11:21.000Z","updatedAt":"2016-12-28T17:11:23.000Z","description":"Charge
-        for ysadcsantos@gmail.com","paymentTokenId":"PCAIcF56aWetOoYGlsBjGzYO9yoRN9s54PeLHP8LD0Xdu43rSEuV0MQwHNDgVAZVc4bIDXThsT0265erRSULaXyueB62yqPDcgHOMYiGAHXo5jNcmQa4ccMjpWpPOY4PybEacFEb3QlK8te6Ui1u5lX9E5Y95ekl4Q"}'
+      string: '{"id":"7c8a8cc8-93bf-414c-99d9-88759e6a5f70","isPaid":true,"status":"PAYMENT_SUCCESS","amount":100,"currency":"PHP","createdAt":"2016-12-28T19:30:27.000Z","updatedAt":"2016-12-28T19:30:30.000Z","description":"Charge
+        for ysadcsantos@gmail.com","paymentTokenId":"ikBrcKmHEBsKQM99moUmyr48TqWj8q1eB6WXCxSFwTNOCURTvCLWxbYx4shMXMZEh2Vg5D3vTY1sqUCOsmAyPqMir6GUqolDEdrJSiaovsZONvUufqUgIa2SRH6bL4k9G3OMNho2S86E5OeSHtNFnduqnzQInTGU"}'
     http_version: 
-  recorded_at: Wed, 28 Dec 2016 17:11:33 GMT
+  recorded_at: Wed, 28 Dec 2016 19:30:30 GMT
 recorded_with: VCR 3.0.3

@@ -8,7 +8,7 @@ describe Paymaya::PaymentVault::Payment do
 
   let(:valid_payment) do
     {
-      payment_token_id: 'PCAIcF56aWetOoYGlsBjGzYO9yoRN9s54PeLHP8LD0Xdu43rSEuV0MQwHNDgVAZVc4bIDXThsT0265erRSULaXyueB62yqPDcgHOMYiGAHXo5jNcmQa4ccMjpWpPOY4PybEacFEb3QlK8te6Ui1u5lX9E5Y95ekl4Q',
+      payment_token_id: 'ikBrcKmHEBsKQM99moUmyr48TqWj8q1eB6WXCxSFwTNOCURTvCLWxbYx4shMXMZEh2Vg5D3vTY1sqUCOsmAyPqMir6GUqolDEdrJSiaovsZONvUufqUgIa2SRH6bL4k9G3OMNho2S86E5OeSHtNFnduqnzQInTGU',
       total_amount: {
         amount: 100,
         currency: 'PHP'
