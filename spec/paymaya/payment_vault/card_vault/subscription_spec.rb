@@ -61,7 +61,7 @@ describe Paymaya::PaymentVault::CardVault::Subscription do
     end
   end
 
-  describe '#list_payments' do
+  xdescribe '#list_payments' do
     it do
       VCR.use_cassette('list_subscription_payments') do
         id = ''
@@ -74,7 +74,7 @@ describe Paymaya::PaymentVault::CardVault::Subscription do
   describe '#delete' do
     it do
       VCR.use_cassette('delete_subscription') do
-        id = ''
+        id = 'b7ecd9fc-162a-44a8-8470-0b94cc61eafb'
         subscription = subject.delete(id)
         expect(subscription).to include :status
       end

@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc:@pg-sandbox.paymaya.com/payments/v1/subscriptions/b7ecd9fc-162a-44a8-8470-0b94cc61eafb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Dec 2016 04:12:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '334'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"14e-Sw6UfCzSNGJ86PQZjDDXXw"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"id":"b7ecd9fc-162a-44a8-8470-0b94cc61eafb","description":"Test subscription","status":"CANCELLED","amount":"100","currency":"PHP","interval":"DAY","metadata":null,"intervalCount":1,"startDate":"2016-12-30T00:00:00.000Z","endDate":null,"cancelledAt":null,"createdAt":"2016-12-29T04:11:50.000Z","updatedAt":"2016-12-29T04:12:48.000Z"}'
+    http_version: 
+  recorded_at: Thu, 29 Dec 2016 04:12:48 GMT
+recorded_with: VCR 3.0.3

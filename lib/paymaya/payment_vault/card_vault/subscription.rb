@@ -24,6 +24,12 @@ module Paymaya
           Helper.snakify(JSON.parse(response))
         end
 
+        def delete(id)
+          response = RestClient.delete(subscription_url(id),
+            auth_headers)
+          Helper.snakify(JSON.parse(response))
+        end
+
         def customer_subscription_url(customer_id, card_token)
           "#{Paymaya.config.base_url}/payments/v1/customers/#{customer_id}/cards/#{card_token}/subscriptions"
         end
