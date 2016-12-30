@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc:@pg-sandbox.paymaya.com/payments/v1/payments/a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b/refunds/a871f909-e169-49c6-8fba-772ef2102ec9
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Dec 2016 07:21:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '245'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"f5-ZbsgNwXwyDcn4W26hnr+Og"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '{"payment":"a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b","id":"a871f909-e169-49c6-8fba-772ef2102ec9","reason":"Test
+        refund","amount":"10","currency":"PHP","status":"SUCCESS","createdAt":"2016-12-30T07:18:27.000Z","updatedAt":"2016-12-30T07:18:31.000Z"}'
+    http_version: 
+  recorded_at: Fri, 30 Dec 2016 07:21:56 GMT
+recorded_with: VCR 3.0.3

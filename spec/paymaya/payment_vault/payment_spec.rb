@@ -73,31 +73,35 @@ describe Paymaya::PaymentVault::Payment do
     end
   end
 
-  xdescribe '#refund' do
+  describe '#refund' do
     it do
       VCR.use_cassette('refund_payment') do
         payment = 'a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b'
-        refund = subject.refund(id)
+        refund = subject.refund(payment, {
+          amount: 10,
+          currency: 'PHP'
+        }, 'Test refund')
         expect(refund).to include :status
       end
     end
   end
 
-  xdescribe '#retrieve_refunds' do
+  describe '#list_refunds' do
     it do
-      VCR.use_cassette('retrieve_refunds') do
+      VCR.use_cassette('list_refunds') do
         payment = 'a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b'
-        refund = subject.retrieve_refunds(id)[0]
+        refund = subject.list_refunds(payment)[0]
         expect(refund).to include :status
       end
     end
   end
 
-  xdescribe '#retrieve_refund' do
+  describe '#retrieve_refund' do
     it do
       VCR.use_cassette('retrieve_refund') do
         payment = 'a4fb5b17-9d84-4b8e-ae9f-d61dc95f3f8b'
-        refund = subject.retrieve_refund(id, id)
+        id = 'a871f909-e169-49c6-8fba-772ef2102ec9'
+        refund = subject.retrieve_refund(payment, id)
         expect(refund).to include :status
       end
     end

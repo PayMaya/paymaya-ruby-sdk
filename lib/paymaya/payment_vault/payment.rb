@@ -13,7 +13,7 @@ module Paymaya
           payment_token_id: payment_token_id
         }
         payload[:metadata] = metadata unless metadata.nil?
-        response = RestClient.post(payment_url, payload.to_camelback_keys.to_json, auth_headers)
+        response = RestClient.post(payment_url, Helper.camelify(payload).to_json, auth_headers)
         Helper.snakify(JSON.parse(response))
       end
 
@@ -29,6 +29,28 @@ module Paymaya
             reason: reason
           }.to_json
         )
+        Helper.snakify(JSON.parse(response))
+      end
+
+      def refund(id, total_amount, reason)
+        payload = {
+          total_amount: total_amount,
+          reason: reason
+        }
+        response = RestClient.post("#{payment_url}/#{id}/refunds",
+          Helper.camelify(payload).to_json, auth_headers)
+        Helper.snakify(JSON.parse(response))
+      end
+
+      def list_refunds(id)
+        response = RestClient.get("#{payment_url}/#{id}/refunds",
+          auth_headers)
+        Helper.snakify(JSON.parse(response))
+      end
+
+      def retrieve_refund(payment, id)
+        response = RestClient.get("#{payment_url}/#{payment}/refunds/#{id}",
+          auth_headers)
         Helper.snakify(JSON.parse(response))
       end
 
