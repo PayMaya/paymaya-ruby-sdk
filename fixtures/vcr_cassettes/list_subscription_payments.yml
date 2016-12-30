@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sk-GgVT0xX7YJcWBauR4UqnMkyFt8GpksixEUaV7qWnDJc:@pg-sandbox.paymaya.com/payments/v1/subscriptions/e42ac501-5538-461e-80a6-e59ef3884afc/payments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.0.0 x86_64) ruby/2.3.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - pg-sandbox.paymaya.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Dec 2016 07:27:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '857'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"359-ooo2b3GlOAbM4WqH5ZuBOw"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Via:
+      - kong/0.4.2
+    body:
+      encoding: UTF-8
+      string: '[{"id":"9e244d8d-ca44-4106-931d-66a884beafd0","isPaid":true,"status":"PAYMENT_SUCCESS","amount":100,"currency":"PHP","createdAt":"2016-12-30T00:00:00.000Z","updatedAt":"2016-12-30T00:00:05.000Z","description":"Charge
+        for ysadcsantos@gmail.com","paymentTokenId":"wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU"},{"id":"913cafd3-9b6b-44cc-95d0-3c579560d842","isPaid":true,"status":"PAYMENT_SUCCESS","amount":100,"currency":"PHP","createdAt":"2016-12-30T00:00:01.000Z","updatedAt":"2016-12-30T00:00:07.000Z","description":"Charge
+        for ysadcsantos@gmail.com","paymentTokenId":"wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU"}]'
+    http_version: 
+  recorded_at: Fri, 30 Dec 2016 07:27:51 GMT
+recorded_with: VCR 3.0.3
