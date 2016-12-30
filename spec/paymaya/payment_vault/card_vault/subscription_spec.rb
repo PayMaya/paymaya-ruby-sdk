@@ -61,11 +61,11 @@ describe Paymaya::PaymentVault::CardVault::Subscription do
     end
   end
 
-  xdescribe '#list_payments' do
+  describe '#list_payments' do
     it do
       VCR.use_cassette('list_subscription_payments') do
-        id = ''
-        subscription = subject.update(customer_id, card_token, id, valid_subscription_update)
+        id = 'e42ac501-5538-461e-80a6-e59ef3884afc'
+        subscription = subject.list_payments(id)[0]
         expect(subscription).to include :status
       end
     end
