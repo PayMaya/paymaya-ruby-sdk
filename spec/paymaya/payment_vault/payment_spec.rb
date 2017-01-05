@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
 describe Paymaya::PaymentVault::Payment do
@@ -8,7 +9,9 @@ describe Paymaya::PaymentVault::Payment do
 
   let(:valid_payment) do
     {
-      payment_token_id: 'ikBrcKmHEBsKQM99moUmyr48TqWj8q1eB6WXCxSFwTNOCURTvCLWxbYx4shMXMZEh2Vg5D3vTY1sqUCOsmAyPqMir6GUqolDEdrJSiaovsZONvUufqUgIa2SRH6bL4k9G3OMNho2S86E5OeSHtNFnduqnzQInTGU',
+      payment_token_id: 'ikBrcKmHEBsKQM99moUmyr48TqWj8q1eB6WXCxSFwTNOCURTvCLWx'\
+      'bYx4shMXMZEh2Vg5D3vTY1sqUCOsmAyPqMir6GUqolDEdrJSiaovsZONvUufqUgIa2SRH6b'\
+      'L4k9G3OMNho2S86E5OeSHtNFnduqnzQInTGU',
       total_amount: {
         amount: 100,
         currency: 'PHP'

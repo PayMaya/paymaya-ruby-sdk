@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'paymaya/version'
 require 'paymaya/helper'
 require 'paymaya/checkout/webhook'

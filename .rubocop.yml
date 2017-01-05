@@ -7,6 +7,14 @@ Lint/BlockAlignment:
 Lint/EndAlignment:
   AlignWith: variable
 
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
 Rails:
   Enabled: true
 
