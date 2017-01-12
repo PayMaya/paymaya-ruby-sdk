@@ -8,11 +8,8 @@ module Paymaya
     class Checkout
       def create(total_amount:, buyer:, items:, redirect_url: nil,
         request_reference_number: nil, metadata: nil)
-        payload = {
-          total_amount: total_amount,
-          buyer: buyer,
-          items: Helper.camelify(items)
-        }
+        payload = { total_amount: total_amount, buyer: buyer,
+                    items: Helper.camelify(items) }
         payload[:redirect_url] = redirect_url unless redirect_url.nil?
         unless request_reference_number.nil?
           payload[:request_reference_number] = request_reference_number

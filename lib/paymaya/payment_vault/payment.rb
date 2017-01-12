@@ -14,7 +14,8 @@ module Paymaya
           payment_token_id: payment_token_id
         }
         payload[:metadata] = metadata unless metadata.nil?
-        response = RestClient.post(payment_url, Helper.camelify(payload).to_json, auth_headers)
+        response = RestClient.post(payment_url,
+          Helper.camelify(payload).to_json, auth_headers)
         Helper.snakify(JSON.parse(response))
       end
 

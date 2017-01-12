@@ -5,7 +5,8 @@ require 'plissken'
 module Paymaya
   module Checkout
     class Customization
-      def set(logo_url:, icon_url:, apple_touch_icon_url:, custom_title:, color_scheme:)
+      def set(logo_url:, icon_url:, apple_touch_icon_url:, custom_title:,
+        color_scheme:)
         response = RestClient.post(customization_url, {
           logo_url: logo_url,
           icon_url: icon_url,

@@ -1,5 +1,10 @@
 AllCops:
   TargetRubyVersion: 2.3
+  Exclude:
+    - "Gemfile"
+    - "Rakefile"
+    - "bin/*"
+    - "paymaya.gemspec"
 
 Lint/BlockAlignment:
   AlignWith: start_of_block
@@ -14,6 +19,9 @@ Metrics/ModuleLength:
 Metrics/BlockLength:
   Exclude:
     - "**/*_spec.rb"
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
 
 Rails:
   Enabled: true
