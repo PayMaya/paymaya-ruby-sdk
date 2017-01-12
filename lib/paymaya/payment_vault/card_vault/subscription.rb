@@ -48,7 +48,7 @@ module Paymaya
         def auth_headers
           {
             authorization:
-              "Basic #{Base64.strict_encode64(Paymaya.config.secret_key + ':').chomp}",
+              "Basic #{Base64.strict_encode64(Paymaya.config.payment_vault_secret_key + ':').chomp}",
             content_type: 'application/json'
           }
         end
