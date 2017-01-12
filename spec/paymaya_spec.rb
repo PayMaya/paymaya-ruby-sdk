@@ -15,22 +15,40 @@ describe Paymaya do
         .to('base_url')
     end
 
-    it 'configures secret_key' do
+    it 'configures payment_vault_secret_key' do
       expect do
         Paymaya.configure do |config|
-          config.secret_key = 'secret_key'
+          config.payment_vault_secret_key = 'payment_vault_secret_key'
         end
-      end.to change { subject.config.secret_key }
-        .to('secret_key')
+      end.to change { subject.config.payment_vault_secret_key }
+        .to('payment_vault_secret_key')
     end
 
-    it 'configures public_key' do
+    it 'configures payment_vault_public_key' do
       expect do
         Paymaya.configure do |config|
-          config.public_key = 'public_key'
+          config.payment_vault_public_key = 'payment_vault_public_key'
         end
-      end.to change { subject.config.public_key }
-        .to('public_key')
+      end.to change { subject.config.payment_vault_public_key }
+        .to('payment_vault_public_key')
+    end
+
+    it 'configures checkout_secret_key' do
+      expect do
+        Paymaya.configure do |config|
+          config.checkout_secret_key = 'checkout_secret_key'
+        end
+      end.to change { subject.config.checkout_secret_key }
+        .to('checkout_secret_key')
+    end
+
+    it 'configures checkout_public_key' do
+      expect do
+        Paymaya.configure do |config|
+          config.checkout_public_key = 'checkout_public_key'
+        end
+      end.to change { subject.config.checkout_public_key }
+        .to('checkout_public_key')
     end
   end
 end

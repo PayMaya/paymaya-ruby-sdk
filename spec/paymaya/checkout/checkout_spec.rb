@@ -74,8 +74,8 @@ describe Paymaya::Checkout::Checkout do
     allow(Paymaya).to receive(:config).and_return(
       double(
         base_url: base_url,
-        secret_key: secret_key,
-        public_key: public_key
+        checkout_secret_key: secret_key,
+        checkout_public_key: public_key
       )
     )
   end
