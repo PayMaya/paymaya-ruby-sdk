@@ -6,8 +6,8 @@ require 'paymaya/version'
 Gem::Specification.new do |spec|
   spec.name          = "paymaya"
   spec.version       = Paymaya::VERSION
-  spec.authors       = ["Dan Leland Suarez"]
-  spec.email         = ["dan.suarez@voyagerinnovation.com"]
+  spec.authors       = ["PayMaya"]
+  spec.email         = ["paymayadevs@voyager.ph"]
 
   spec.summary       = %q{PayMaya Ruby SDK}
   spec.description   = %q{Ruby SDK for easy integration with the PayMaya APIs.}
