@@ -8,48 +8,36 @@ module Paymaya
     module CardVault
       class Card
         def create(customer_id, card)
-          response = RestClient.post(card_url(customer_id),
-            Helper.camelify(card).to_json, auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:post, card_url(customer_id),
+            card, Helper.payment_vault_secret_auth_headers)
         end
 
         def list(customer_id)
-          response = RestClient.get(card_url(customer_id),
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:get, card_url(customer_id), {},
+            Helper.payment_vault_secret_auth_headers)
         end
 
         def retrieve(customer_id, id)
-          response = RestClient.get("#{card_url(customer_id)}/#{id}",
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:get, "#{card_url(customer_id)}/#{id}", {},
+            Helper.payment_vault_secret_auth_headers)
         end
 
         def delete(customer_id, id)
-          response = RestClient.delete("#{card_url(customer_id)}/#{id}",
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:delete, "#{card_url(customer_id)}/#{id}", {},
+            Helper.payment_vault_secret_auth_headers)
         end
 
         def update(customer_id, id, card)
-          response = RestClient.put("#{card_url(customer_id)}/#{id}",
-            Helper.camelify(card).to_json, auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:put, "#{card_url(customer_id)}/#{id}",
+            card, Helper.payment_vault_secret_auth_headers)
         end
 
         def card_url(customer_id)
-          "#{Paymaya.config.base_url}/payments/v1/customers/#{customer_id}/cards"
+          "#{Paymaya.config.base_url}/payments/v1/customers/#{customer_id}/" \
+          'cards'
         end
 
-        def auth_headers
-          {
-            authorization:
-              "Basic #{Base64.strict_encode64(Paymaya.config.payment_vault_secret_key + ':').chomp}",
-            content_type: 'application/json'
-          }
-        end
-
-        private :card_url, :auth_headers
+        private :card_url
       end
     end
   end

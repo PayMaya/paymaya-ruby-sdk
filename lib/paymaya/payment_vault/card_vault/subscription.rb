@@ -8,52 +8,42 @@ module Paymaya
     module CardVault
       class Subscription
         def create(customer_id, card_token, payment)
-          response = RestClient.post(customer_subscription_url(customer_id, card_token),
-            Helper.camelify(payment).to_json, auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:post,
+            customer_subscription_url(customer_id, card_token),
+            payment, Helper.payment_vault_secret_auth_headers)
         end
 
         def list(customer_id, card_token)
-          response = RestClient.get(customer_subscription_url(customer_id, card_token),
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:get,
+            customer_subscription_url(customer_id, card_token),
+            {}, Helper.payment_vault_secret_auth_headers)
         end
 
         def retrieve(id)
-          response = RestClient.get(subscription_url(id),
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:get, subscription_url(id), {},
+            Helper.payment_vault_secret_auth_headers)
         end
 
         def delete(id)
-          response = RestClient.delete(subscription_url(id),
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:delete, subscription_url(id), {},
+            Helper.payment_vault_secret_auth_headers)
         end
 
         def list_payments(id)
-          response = RestClient.get("#{subscription_url(id)}/payments",
-            auth_headers)
-          Helper.snakify(JSON.parse(response))
+          Helper.request(:get, "#{subscription_url(id)}/payments", {},
+            Helper.payment_vault_secret_auth_headers)
         end
 
         def customer_subscription_url(customer_id, card_token)
-          "#{Paymaya.config.base_url}/payments/v1/customers/#{customer_id}/cards/#{card_token}/subscriptions"
+          "#{Paymaya.config.base_url}/payments/v1/customers/#{customer_id}/" \
+          "cards/#{card_token}/subscriptions"
         end
 
         def subscription_url(id)
           "#{Paymaya.config.base_url}/payments/v1/subscriptions/#{id}"
         end
 
-        def auth_headers
-          {
-            authorization:
-              "Basic #{Base64.strict_encode64(Paymaya.config.payment_vault_secret_key + ':').chomp}",
-            content_type: 'application/json'
-          }
-        end
-
-        private :subscription_url, :auth_headers
+        private :subscription_url
       end
     end
   end

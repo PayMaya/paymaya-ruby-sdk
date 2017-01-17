@@ -70,6 +70,15 @@ module Paymaya
       }
     end
 
-    private_class_method :transform, :transform_array, :transform_hash
+    def self.request(method, url, params, headers)
+      response = RestClient::Request.execute(
+        method: method, url: url,
+        headers: headers, payload: camelify(params).to_json
+      )
+      snakify(JSON.parse(response))
+    end
+
+    private_class_method :transform, :transform_array, :transform_hash,
+      :auth_headers
   end
 end

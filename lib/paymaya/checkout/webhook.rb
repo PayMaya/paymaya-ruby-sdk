@@ -7,44 +7,34 @@ module Paymaya
   module Checkout
     class Webhook
       def register(name:, callback_url:)
-        response = RestClient.post(webhook_url, {
+        Helper.request(:post, webhook_url, {
           name: name,
           callback_url: callback_url
-        }.to_camelback_keys.to_json, auth_headers)
-        Helper.snakify(JSON.parse(response))
+        }, Helper.checkout_secret_auth_headers)
       end
 
       def list
-        response = RestClient.get(webhook_url, auth_headers)
-        Helper.snakify(JSON.parse(response))
+        Helper.request(:get, webhook_url, {},
+          Helper.checkout_secret_auth_headers)
       end
 
       def delete(id)
-        response = RestClient.delete("#{webhook_url}/#{id}", auth_headers)
-        Helper.snakify(JSON.parse(response))
+        Helper.request(:delete, "#{webhook_url}/#{id}", {},
+          Helper.checkout_secret_auth_headers)
       end
 
       def update(id, name:, callback_url:)
-        response = RestClient.put("#{webhook_url}/#{id}", {
+        Helper.request(:put, "#{webhook_url}/#{id}", {
           name: name,
-          callbackUrl: callback_url
-        }.to_json, auth_headers)
-        Helper.snakify(JSON.parse(response))
+          callback_url: callback_url
+        }, Helper.checkout_secret_auth_headers)
       end
 
       def webhook_url
         "#{Paymaya.config.base_url}/checkout/v1/webhooks"
       end
 
-      def auth_headers
-        {
-          authorization:
-            "Basic #{Base64.strict_encode64(Paymaya.config.checkout_secret_key + ':').chomp}",
-          content_type: 'application/json'
-        }
-      end
-
-      private :webhook_url, :auth_headers
+      private :webhook_url
     end
   end
 end

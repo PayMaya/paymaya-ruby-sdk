@@ -7,9 +7,15 @@ describe Paymaya::PaymentVault::CardVault::Card do
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
 
+  let(:payment_token_id) do
+    'wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0' \
+    'Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9r' \
+    'BuPXe5JIZwFkzz5X1SXU'
+  end
+
   let(:valid_card) do
     {
-      payment_token_id: 'wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU',
+      payment_token_id: payment_token_id,
       is_default: true,
       redirect_url: {
         success: 'http://shop.server.com/success?id=123',
@@ -26,7 +32,7 @@ describe Paymaya::PaymentVault::CardVault::Card do
   end
 
   let(:customer_id) { '5f39f980-225f-4805-b61f-50e84ce3fcdf' }
-  let(:card_id) { 'wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU' }
+  let(:card_id) { payment_token_id }
 
   before :example do
     allow(Paymaya).to receive(:config).and_return(
@@ -77,7 +83,9 @@ describe Paymaya::PaymentVault::CardVault::Card do
   describe '#delete' do
     it do
       VCR.use_cassette('delete_card') do
-        id = 'SEoXZtBtNX1AMgUDeJWlnzOaqH6ofjNYAAyRuD6osoBKkkPgT1axov0hkoKWoYayojFFGt0ZtycD8ALz9EU1sSvD7RMo547NRXnEMdDOw91RDuWeaU1ZXpo7oflKt8B8ae4rgNclThq65E7FixsDCH2C8N7skG1ztUw'
+        id = 'SEoXZtBtNX1AMgUDeJWlnzOaqH6ofjNYAAyRuD6osoBKkkPgT1axov0hkoKWoYa' \
+             'yojFFGt0ZtycD8ALz9EU1sSvD7RMo547NRXnEMdDOw91RDuWeaU1ZXpo7oflKt8' \
+             'B8ae4rgNclThq65E7FixsDCH2C8N7skG1ztUw'
         card = subject.delete(customer_id, id)
         expect(card).to include :state
       end
