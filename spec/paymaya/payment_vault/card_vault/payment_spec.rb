@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
 describe Paymaya::PaymentVault::CardVault::Payment do
@@ -16,14 +17,18 @@ describe Paymaya::PaymentVault::CardVault::Payment do
   end
 
   let(:customer_id) { '5f39f980-225f-4805-b61f-50e84ce3fcdf' }
-  let(:card_token) { 'wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9rBuPXe5JIZwFkzz5X1SXU' }
+  let(:card_token) do
+    'wdi6mkRvsaLNTiTOoMJD3GLUrdC0SdBvr7e6LbJvjxU2gjdr5k9Gynj0GQN7f9fofsDBlqy0' \
+    'Zzq6u4Vwhfd8hug0dCQo3NSb3RDV2GndnhmSEkKoY4eoAlxYaZUtJ4mFObMGGHxPmTaXZC9r' \
+    'BuPXe5JIZwFkzz5X1SXU'
+  end
 
   before :example do
     allow(Paymaya).to receive(:config).and_return(
       double(
         base_url: base_url,
-        secret_key: secret_key,
-        public_key: public_key
+        payment_vault_secret_key: secret_key,
+        payment_vault_public_key: public_key
       )
     )
   end

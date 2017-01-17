@@ -1,43 +1,37 @@
+# frozen_string_literal: true
 require 'rest-client'
-require 'plissken'
+
+require 'paymaya/helper'
 
 module Paymaya
   module Checkout
     class Customization
-      def set(logo_url:, icon_url:, apple_touch_icon_url:, custom_title:, color_scheme:)
-        response = RestClient.post(customization_url, {
+      def set(logo_url:, icon_url:, apple_touch_icon_url:, custom_title:,
+        color_scheme:)
+        Helper.request(:post, customization_url, {
           logo_url: logo_url,
           icon_url: icon_url,
           apple_touch_icon_url: apple_touch_icon_url,
           custom_title: custom_title,
           color_scheme: color_scheme
-        }.to_camelback_keys.to_json, auth_headers)
-        JSON.parse(response)
+        }, Helper.checkout_secret_auth_headers)
       end
 
       def get
-        response = RestClient.get(customization_url, auth_headers)
-        JSON.parse(response)
+        Helper.request(:get, customization_url, {},
+          Helper.checkout_secret_auth_headers)
       end
 
       def remove
-        response = RestClient.delete(customization_url, auth_headers)
-        JSON.parse(response)
+        Helper.request(:delete, customization_url, {},
+          Helper.checkout_secret_auth_headers)
       end
 
       def customization_url
         "#{Paymaya.config.base_url}/checkout/v1/customizations"
       end
 
-      def auth_headers
-        {
-          authorization:
-            "Basic #{Base64.strict_encode64(Paymaya.config.secret_key + ':').chomp}",
-          content_type: 'application/json'
-        }
-      end
-
-      private :customization_url, :auth_headers
+      private :customization_url
     end
   end
 end
