@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
 describe Paymaya::Checkout::Customization do
@@ -19,7 +20,7 @@ describe Paymaya::Checkout::Customization do
     allow(Paymaya).to receive(:config).and_return(
       double(
         base_url: base_url,
-        secret_key: secret_key
+        checkout_secret_key: secret_key
       )
     )
   end
@@ -28,11 +29,11 @@ describe Paymaya::Checkout::Customization do
     it 'sets the customization' do
       VCR.use_cassette('set_customization') do
         set = subject.set(valid_customization)
-        expect(set).to include 'logoUrl'
-        expect(set).to include 'iconUrl'
-        expect(set).to include 'appleTouchIconUrl'
-        expect(set).to include 'customTitle'
-        expect(set).to include 'colorScheme'
+        expect(set).to include :logo_url
+        expect(set).to include :icon_url
+        expect(set).to include :apple_touch_icon_url
+        expect(set).to include :custom_title
+        expect(set).to include :color_scheme
       end
     end
   end
@@ -41,11 +42,11 @@ describe Paymaya::Checkout::Customization do
     it 'gets the customization' do
       VCR.use_cassette('get_customization') do
         customization = subject.get
-        expect(customization).to include 'logoUrl'
-        expect(customization).to include 'iconUrl'
-        expect(customization).to include 'appleTouchIconUrl'
-        expect(customization).to include 'customTitle'
-        expect(customization).to include 'colorScheme'
+        expect(customization).to include :logo_url
+        expect(customization).to include :icon_url
+        expect(customization).to include :apple_touch_icon_url
+        expect(customization).to include :custom_title
+        expect(customization).to include :color_scheme
       end
     end
   end
@@ -54,7 +55,7 @@ describe Paymaya::Checkout::Customization do
     it 'removes the customization' do
       VCR.use_cassette('remove_customization') do
         removed = subject.remove
-        expect(removed['message']).to eq 'customizations removed'
+        expect(removed[:message]).to eq 'customizations removed'
       end
     end
   end
