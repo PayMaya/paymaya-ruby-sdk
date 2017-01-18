@@ -32,4 +32,4 @@ Set `config.mode` to either `:sandbox` or `:prod` to  switch between the sandbox
 
 ## Usage
 
-See the [Usage](https://github.com/paymaya/paymaya-ruby-sdk/wiki/Usage) page in the wiki for more information.
+See the [PayMaya Ruby SDK Wiki Page](https://github.com/PayMaya/paymaya-ruby-sdk/wiki) for more information regarding usage and integration.
