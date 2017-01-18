@@ -5,8 +5,8 @@ require 'paymaya/helper'
 
 module Paymaya
   module Checkout
-    class Customization
-      def set(logo_url:, icon_url:, apple_touch_icon_url:, custom_title:,
+    module Customization
+      def self.set(logo_url:, icon_url:, apple_touch_icon_url:, custom_title:,
         color_scheme:)
         Helper.request(:post, customization_url, {
           logo_url: logo_url,
@@ -17,21 +17,21 @@ module Paymaya
         }, Helper.checkout_secret_auth_headers)
       end
 
-      def get
+      def self.get
         Helper.request(:get, customization_url, {},
           Helper.checkout_secret_auth_headers)
       end
 
-      def remove
+      def self.remove
         Helper.request(:delete, customization_url, {},
           Helper.checkout_secret_auth_headers)
       end
 
-      def customization_url
+      def self.customization_url
         "#{Paymaya.config.base_url}/checkout/v1/customizations"
       end
 
-      private :customization_url
+      private_class_method :customization_url
     end
   end
 end

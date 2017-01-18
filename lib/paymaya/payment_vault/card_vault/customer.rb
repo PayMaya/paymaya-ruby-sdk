@@ -6,32 +6,32 @@ require 'paymaya/helper'
 module Paymaya
   module PaymentVault
     module CardVault
-      class Customer
-        def create(customer)
+      module Customer
+        def self.create(customer)
           Helper.request(:post, customer_url,
             customer, Helper.payment_vault_secret_auth_headers)
         end
 
-        def retrieve(id)
+        def self.retrieve(id)
           Helper.request(:get, "#{customer_url}/#{id}", {},
             Helper.payment_vault_secret_auth_headers)
         end
 
-        def delete(id)
+        def self.delete(id)
           Helper.request(:delete, "#{customer_url}/#{id}", {},
             Helper.payment_vault_secret_auth_headers)
         end
 
-        def update(id, customer)
+        def self.update(id, customer)
           Helper.request(:put, "#{customer_url}/#{id}",
             customer, Helper.payment_vault_secret_auth_headers)
         end
 
-        def customer_url
+        def self.customer_url
           "#{Paymaya.config.base_url}/payments/v1/customers"
         end
 
-        private :customer_url
+        private_class_method :customer_url
       end
     end
   end

@@ -5,8 +5,8 @@ require 'paymaya/helper'
 
 module Paymaya
   module PaymentVault
-    class Payment
-      def create(payment_token_id:, total_amount:, buyer:,
+    module Payment
+      def self.create(payment_token_id:, total_amount:, buyer:,
         metadata: nil)
         payload = {
           total_amount: total_amount,
@@ -18,18 +18,18 @@ module Paymaya
           Helper.payment_vault_secret_auth_headers)
       end
 
-      def retrieve(id)
+      def self.retrieve(id)
         Helper.request(:get, "#{payment_url}/#{id}", {},
           Helper.payment_vault_secret_auth_headers)
       end
 
-      def void(id, reason)
+      def self.void(id, reason)
         Helper.request(:delete, "#{payment_url}/#{id}", {
           reason: reason
         }, Helper.payment_vault_secret_auth_headers)
       end
 
-      def refund(id, total_amount, reason)
+      def self.refund(id, total_amount, reason)
         payload = {
           total_amount: total_amount,
           reason: reason
@@ -38,21 +38,21 @@ module Paymaya
           payload, Helper.payment_vault_secret_auth_headers)
       end
 
-      def list_refunds(id)
+      def self.list_refunds(id)
         Helper.request(:get, "#{payment_url}/#{id}/refunds",
           {}, Helper.payment_vault_secret_auth_headers)
       end
 
-      def retrieve_refund(payment, id)
+      def self.retrieve_refund(payment, id)
         Helper.request(:get, "#{payment_url}/#{payment}/refunds/#{id}",
           {}, Helper.payment_vault_secret_auth_headers)
       end
 
-      def payment_url
+      def self.payment_url
         "#{Paymaya.config.base_url}/payments/v1/payments"
       end
 
-      private :payment_url
+      private_class_method :payment_url
     end
   end
 end

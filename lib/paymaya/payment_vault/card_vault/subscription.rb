@@ -6,44 +6,44 @@ require 'paymaya/helper'
 module Paymaya
   module PaymentVault
     module CardVault
-      class Subscription
-        def create(customer_id, card_token, payment)
+      module Subscription
+        def self.create(customer_id, card_token, payment)
           Helper.request(:post,
             customer_subscription_url(customer_id, card_token),
             payment, Helper.payment_vault_secret_auth_headers)
         end
 
-        def list(customer_id, card_token)
+        def self.list(customer_id, card_token)
           Helper.request(:get,
             customer_subscription_url(customer_id, card_token),
             {}, Helper.payment_vault_secret_auth_headers)
         end
 
-        def retrieve(id)
+        def self.retrieve(id)
           Helper.request(:get, subscription_url(id), {},
             Helper.payment_vault_secret_auth_headers)
         end
 
-        def delete(id)
+        def self.delete(id)
           Helper.request(:delete, subscription_url(id), {},
             Helper.payment_vault_secret_auth_headers)
         end
 
-        def list_payments(id)
+        def self.list_payments(id)
           Helper.request(:get, "#{subscription_url(id)}/payments", {},
             Helper.payment_vault_secret_auth_headers)
         end
 
-        def customer_subscription_url(customer_id, card_token)
+        def self.customer_subscription_url(customer_id, card_token)
           "#{Paymaya.config.base_url}/payments/v1/customers/#{customer_id}/" \
           "cards/#{card_token}/subscriptions"
         end
 
-        def subscription_url(id)
+        def self.subscription_url(id)
           "#{Paymaya.config.base_url}/payments/v1/subscriptions/#{id}"
         end
 
-        private :subscription_url
+        private_class_method :subscription_url
       end
     end
   end
