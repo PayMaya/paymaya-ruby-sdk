@@ -23,6 +23,6 @@ module Paymaya
   end
 
   def self.configure
-    yield(configuration)
+    yield(config)
   end
 end
