@@ -2,18 +2,51 @@
 require 'spec_helper'
 
 describe Paymaya do
+  let(:sandbox_base_url) { 'https://pg-sandbox.paymaya.com' }
+  let(:prod_base_url) { 'https://pg.paymaya.com' }
+
   it 'has a version number' do
     expect(Paymaya::VERSION).not_to be nil
   end
 
   describe '#configure' do
-    it 'configures base_url' do
-      expect do
-        Paymaya.configure do |config|
-          config.base_url = 'base_url'
+    describe 'base_url' do
+      it 'defaults to the sandbox URL' do
+        expect(subject.config.base_url).to eq sandbox_base_url
+      end
+
+      describe 'when config.mode = :sandbox' do
+        before :example do
+          Paymaya.configure do |config|
+            config.mode = :sandbox
+            config.base_url = nil
+          end
         end
-      end.to change { subject.config.base_url }
-        .to('base_url')
+        it 'returns the sandbox URL' do
+          expect(subject.config.base_url).to eq sandbox_base_url
+        end
+      end
+
+      describe 'when config.mode = :prod' do
+        before :example do
+          Paymaya.configure do |config|
+            config.mode = :prod
+            config.base_url = nil
+          end
+        end
+        it 'returns the prod URL' do
+          expect(subject.config.base_url).to eq prod_base_url
+        end
+      end
+
+      it 'is set by .configure' do
+        expect do
+          Paymaya.configure do |config|
+            config.base_url = 'base_url'
+          end
+        end.to change { subject.config.base_url }
+          .to('base_url')
+      end
     end
 
     it 'configures payment_vault_secret_key' do
