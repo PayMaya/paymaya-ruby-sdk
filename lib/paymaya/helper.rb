@@ -2,6 +2,8 @@
 require 'awrence'
 require 'plissken'
 
+require 'money'
+
 module Paymaya
   module Helper
     def self.payment_facilitator(submerchant_id:, submerchant_name:,
@@ -91,7 +93,6 @@ module Paymaya
     end
 
     def self.request(method, url, params, headers)
-      puts "=========\n#{camelify(params).to_json}\n========="
       response = RestClient::Request.execute(
         method: method, url: url,
         headers: headers, payload: camelify(params).to_json

@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rest-client", "~> 2.0"
   spec.add_runtime_dependency "plissken", "~> 0.2"
   spec.add_runtime_dependency "awrence", "~> 0.1"
-  spec.add_runtime_dependency "money", "~> 6.7.1"
+  spec.add_runtime_dependency "money", "~> 6.7"
 end
