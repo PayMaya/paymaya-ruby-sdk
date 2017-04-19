@@ -46,6 +46,26 @@ module Paymaya
       hash
     end
 
+    def self.stringify_numbers(input, currency)
+      if input.is_a? Hash
+        output = {}
+        input.each do |k, v|
+          output[k] = if (MONEY_PARAMS.include? k) && (v.is_a? Numeric)
+            format_amount(v, currency)
+          else
+            stringify_numbers(v, currency)
+          end
+        end
+        output
+      elsif input.is_a? Array
+        input.map do |elem|
+          stringify_numbers(elem, currency)
+        end
+      else
+        input.to_s
+      end
+    end
+
     def self.payment_vault_public_auth_headers
       auth_headers(Paymaya.config.payment_vault_public_key)
     end
@@ -71,11 +91,20 @@ module Paymaya
     end
 
     def self.request(method, url, params, headers)
+      puts "=========\n#{camelify(params).to_json}\n========="
       response = RestClient::Request.execute(
         method: method, url: url,
         headers: headers, payload: camelify(params).to_json
       )
       snakify(JSON.parse(response))
+    end
+
+    MONEY_PARAMS = [
+      :tax, :subtotal, :discount, :shipping_fee, :amount, :value
+    ].freeze
+
+    def self.format_amount(num, currency)
+      Money.new(num, currency, '').to_s
     end
 
     private_class_method :transform, :transform_array, :transform_hash,
