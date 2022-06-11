@@ -2,8 +2,11 @@
 require 'spec_helper'
 
 describe Paymaya::Checkout::Checkout do
-  let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
-  let(:secret_key) { 'sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y' }
+  # let(:public_key) { 'pk-8rOz4MQKRxd5OLKBPcR6FIUx4Kay71kB3UrBFDaH172' }
+  # let(:secret_key) { 'sk-VrEDVetYZ6f4R1w4g0npwLzeBXtksd1smJ5lqk9Yh4y' }
+
+  let(:public_key) { 'pk-Z0OSzLvIcOI2UIvDhdTGVVfRSSeiGStnceqwUE7n0Ah' }
+  let(:secret_key) { 'sk-X8qolYjy62kIzEbr0QRK1h4b4KDVHaNcwMYk39jInSl' }
 
   let(:base_url) { 'https://pg-sandbox.paymaya.com' }
 
@@ -83,7 +86,7 @@ describe Paymaya::Checkout::Checkout do
 
   describe '#create' do
     it do
-      VCR.use_cassette('create_checkout') do
+      VCR.use_cassette('create_checkout', record: :new_episodes) do
         checkout = subject.create(valid_checkout)
         expect(checkout).to include :checkout_id
         expect(checkout).to include :redirect_url
@@ -93,7 +96,7 @@ describe Paymaya::Checkout::Checkout do
 
   describe '#retrieve' do
     it do
-      VCR.use_cassette('retrieve_checkout') do
+      VCR.use_cassette('retrieve_checkout', record: :new_episodes) do
         id = 'f739d287-7cbf-44eb-8a59-0e64562521b2'
         checkout = subject.retrieve(id)
         expect(checkout).to include :id
